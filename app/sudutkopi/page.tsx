@@ -1,149 +1,147 @@
-import React from 'react';
+"use client";
 
-export default function SudutKopiWebsite() {
+import Image from "next/image";
+import Link from "next/link";
+import ImageCarousel from "../components/ImageCarousel";
+import TextReveal from "../components/TextReveal";
+import FadeInSection from "../components/FadeInSection";
+import Footer from "../components/Footer";
+
+const highlightMenus = [
+  {
+    name: "Kopi Susu Signature",
+    price: "Rp 28.000",
+    img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80",
+    desc: "Favorit pelanggan dengan perpaduan espresso dan susu segar.",
+  },
+  {
+    name: "Avocado Coffee",
+    price: "Rp 32.000",
+    img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80",
+    desc: "Kopi dingin dengan alpukat lembut dan sedikit gula aren.",
+  },
+  {
+    name: "Hazelnut Latte",
+    price: "Rp 30.000",
+    img: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&q=80",
+    desc: "Latte dengan sentuhan hazelnut yang harum dan manis.",
+  },
+];
+
+const suasanCards = [
+  { img: "/suasana-1.JPG", alt: "Suasana Kafe 1", caption: "Suasana Kafe" },
+  { img: "/suasana-2.JPG", alt: "Suasana Kafe 2", caption: "Area Indoor" },
+  { img: "/suasana-3.JPG", alt: "Suasana Kafe 3", caption: "Kenyamanan Pengunjung" },
+  { img: "/suasana-4.JPG", alt: "Suasana Kafe 4", caption: "Interior Kafe" },
+  { img: "/suasana-5.JPG", alt: "Suasana Kafe 5", caption: "Area Santai" },
+  { img: "/suasana-6.JPG", alt: "Suasana Kafe 6", caption: "Tampak Depan" },
+  { img: "/suasana-7.JPG", alt: "Suasana Kafe 7", caption: "Outdoor Area" },
+];
+
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#2C1E16] font-sans scroll-smooth">
-      
-      {/* ================= NAVBAR ================= */}
-      <nav className="sticky top-0 z-50 bg-[#4A3320] text-white px-8 py-5 flex justify-between items-center shadow-md">
-        <div className="flex items-center gap-3">
-          <h1 className="font-bold text-2xl text-[#D4B895]">SudutKopi</h1>
-        </div>
-        <div className="hidden md:flex gap-8 font-medium text-sm">
-          <a href="#home" className="hover:text-[#D4B895] transition">Home</a>
-          <a href="#menu" className="hover:text-[#D4B895] transition">Menu & Pricelist</a>
-          <a href="#about" className="hover:text-[#D4B895] transition">About Us</a>
-          <a href="#contact" className="hover:text-[#D4B895] transition">Contact</a>
-        </div>
-      </nav>
+    <div className="scroll-smooth">
+      {/* Hero Banner */}
+      <section className="hero-animate-bg flex flex-col items-center text-center py-20 px-4 bg-coffee-light text-coffee-dark overflow-hidden">
+        <h1 className="hero-animate-text text-5xl font-bold mb-4">Seteguk Seruput di Satu Sudut</h1>
+        <p className="hero-animate-sub text-xl mb-8 max-w-2xl text-[#5A412B]">
+          Nikmati promo beli 1 gratis 1 untuk semua varian Kopi Susu spesial hari ini!
+        </p>
+        <Link
+          href="/sudutkopi/menu"
+          className="hero-animate-btn px-8 py-3 bg-coffee-dark text-white rounded-full font-semibold hover:bg-[#2C1E16] transition"
+        >
+          Lihat Menu
+        </Link>
+      </section>
 
-      {/* ================= 1. HOME SECTION ================= */}
-      <section id="home" className="flex flex-col">
-        {/* Hero Banner (Promo) */}
-        <div className="flex flex-col items-center text-center py-32 px-4 bg-[#D4B895] text-[#4A3320]">
-          <h1 className="text-5xl font-bold mb-4">Seteguk Seruput di Satu Sudut</h1>
-          <p className="text-xl mb-8 max-w-2xl text-[#5A412B]">
-            Nikmati promo beli 1 gratis 1 untuk semua varian Kopi Susu spesial hari ini!
-          </p>
-          <a href="#menu" className="px-8 py-3 bg-[#4A3320] text-white rounded-full font-semibold hover:bg-[#2C1E16] transition">
-            Lihat Highlight Menu
-          </a>
-        </div>
-
-        {/* Biji Kopi & Suasana Kafe */}
-        <div className="py-20 px-8 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      {/* Biji Kopi */}
+      <FadeInSection>
+        <section className="py-20 px-8 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-[#4A3320] mb-4">Biji Kopi Pilihan</h2>
+            <h2 className="text-3xl font-bold text-coffee-dark mb-4">
+              <TextReveal text="Biji Kopi Pilihan" speed={45} />
+            </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Kami menggunakan 100% biji kopi Arabika lokal yang disangrai dengan tingkat kematangan medium roast, menghasilkan cita rasa yang seimbang antara pahit, manis, dan sedikit asam buah.
+              Kami menggunakan 100% biji kopi Arabika lokal yang disangrai dengan tingkat kematangan
+              medium roast, menghasilkan cita rasa yang seimbang antara pahit, manis, dan sedikit asam
+              buah. Setiap biji dipilih dari petani terbaik di dataran tinggi Jawa dan Sumatera.
             </p>
+            <Link
+              href="/sudutkopi/about"
+              className="text-coffee-mid font-semibold hover:text-coffee-dark transition underline underline-offset-4"
+            >
+              Kenali Cerita Kami &rarr;
+            </Link>
           </div>
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" 
-              alt="Suasana Kafe" 
-              className="rounded-3xl shadow-lg w-full h-64 object-cover"
+          <div className="relative w-full h-64 md:h-80">
+            <Image
+              src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80"
+              alt="Biji Kopi Pilihan"
+              fill
+              className="rounded-3xl shadow-lg object-cover"
             />
-            <p className="text-center text-sm text-gray-500 mt-3 font-medium">Suasana Hangat SudutKopi</p>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeInSection>
 
-      {/* ================= 2. MENU / PRICELIST SECTION ================= */}
-      <section id="menu" className="py-20 px-8 bg-white border-y border-gray-100">
+      {/* Highlight Menu */}
+      <section className="py-20 px-8 bg-white border-y border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-[#4A3320] mb-16">Menu & Pricelist</h1>
-
-          {/* Coffee */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#8B5E3C] mb-6 border-b pb-2">Coffee</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Item Card */}
-              <div className="bg-[#FDFBF7] p-4 rounded-2xl border border-gray-100 flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=150&q=80" className="w-20 h-20 rounded-xl object-cover" alt="Espresso" />
-                <div>
-                  <h3 className="font-bold text-lg">Espresso</h3>
-                  <p className="text-[#8B5E3C] font-semibold">Rp 18.000</p>
-                </div>
-              </div>
-              <div className="bg-[#FDFBF7] p-4 rounded-2xl border border-gray-100 flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=150&q=80" className="w-20 h-20 rounded-xl object-cover" alt="Cappuccino" />
-                <div>
-                  <h3 className="font-bold text-lg">Cappuccino</h3>
-                  <p className="text-[#8B5E3C] font-semibold">Rp 25.000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Non-Coffee */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#8B5E3C] mb-6 border-b pb-2">Non-Coffee</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-[#FDFBF7] p-4 rounded-2xl border border-gray-100 flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1749280447307-31a68eb38673?w=150&q=80" className="w-20 h-20 rounded-xl object-cover" alt="Matcha" />
-                <div>
-                  <h3 className="font-bold text-lg">Matcha Latte</h3>
-                  <p className="text-[#8B5E3C] font-semibold">Rp 28.000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Makanan & Pastry */}
-          <div>
-            <h2 className="text-2xl font-bold text-[#8B5E3C] mb-6 border-b pb-2">Makanan & Pastry</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-[#FDFBF7] p-4 rounded-2xl border border-gray-100 flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=150&q=80" className="w-20 h-20 rounded-xl object-cover" alt="Croissant" />
-                <div>
-                  <h3 className="font-bold text-lg">Butter Croissant</h3>
-                  <p className="text-[#8B5E3C] font-semibold">Rp 22.000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= 3. ABOUT US SECTION ================= */}
-      <section id="about" className="py-20 px-8 bg-[#D4B895] bg-opacity-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl font-bold text-[#4A3320] mb-8">About Us</h1>
-          
-          {/* Cerita Kami */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-4">Cerita Kami</h2>
-            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              Berawal dari kecintaan kami terhadap kopi di tahun 2024, SudutKopi hadir untuk menjadi tempat singgah bagi mereka yang lelah berlari. Kami percaya bahwa setiap sudut memiliki ceritanya masing-masing, dan di SudutKopi, cerita itu ditemani dengan secangkir kopi terbaik.
+          <FadeInSection>
+            <h2 className="text-3xl font-bold text-center text-coffee-dark mb-4">
+              <TextReveal text="Highlight Menu" speed={50} />
+            </h2>
+            <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
+              Pilihan terbaik yang paling digemari oleh pelanggan setia kami.
             </p>
+          </FadeInSection>
+          <div className="grid md:grid-cols-3 gap-8">
+            {highlightMenus.map((item, i) => (
+              <FadeInSection key={item.name} delay={i * 150}>
+                <div
+                  className="menu-card bg-cream rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
+                >
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <Image src={item.img} alt={item.name} fill className="menu-img-zoom object-cover" />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-lg text-coffee-dark">{item.name}</h3>
+                    <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+                    <p className="text-coffee-mid font-bold mt-3">{item.price}</p>
+                  </div>
+                </div>
+              </FadeInSection>
+            ))}
           </div>
-
-          {/* Tim / Barista Kami */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-8">Barista Kami</h2>
-            <div className="flex justify-center gap-8">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-3"></div>
-                <p className="font-bold">Budi</p>
-                <p className="text-sm text-gray-600">Head Barista</p>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-3"></div>
-                <p className="font-bold">Siti</p>
-                <p className="text-sm text-gray-600">Roaster</p>
-              </div>
+          <FadeInSection delay={500}>
+            <div className="text-center mt-10">
+              <Link
+                href="/sudutkopi/menu"
+                className="inline-block px-8 py-3 bg-coffee-dark text-white rounded-full font-semibold hover:bg-[#2C1E16] transition"
+              >
+                Lihat Full Menu
+              </Link>
             </div>
-          </div>
-
-          {/* Testimoni */}
-          <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
-            <h2 className="text-xl font-bold mb-4 text-[#8B5E3C]">Testimoni Pelanggan</h2>
-            <p className="italic text-gray-600">"Kopinya enak, tempatnya cozy banget buat nugas atau sekadar ngobrol bareng teman. Recommended!"</p>
-            <p className="mt-4 font-bold text-sm">- Andi W.</p>
-          </div>
+          </FadeInSection>
         </div>
       </section>
-      </div>
-    );
+
+      {/* Suasana Kafe */}
+      <section className="py-20 px-8 max-w-6xl mx-auto">
+        <FadeInSection>
+          <h2 className="text-3xl font-bold text-center text-coffee-dark mb-4">
+            <TextReveal text="Suasana Kafe" speed={55} />
+          </h2>
+          <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
+            Tempat yang nyaman untuk bekerja, ngobrol, atau sekadar menikmati kopi sendirian.
+          </p>
+        </FadeInSection>
+        <FadeInSection delay={300}>
+          <ImageCarousel items={suasanCards} />
+        </FadeInSection>
+      </section>
+      <Footer />
+    </div>
+  );
 }
